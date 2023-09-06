@@ -13,6 +13,8 @@ const criaNovaLinha = (nome, email) => {
     return linhaNovoCliente
 }
 
+const tabela = document.querySelector('[data-tabela]')
+
 const http = new XMLHttpRequest()
 
 http.open('GET', 'http://localhost:3000/profile')
@@ -20,6 +22,17 @@ http.open('GET', 'http://localhost:3000/profile')
 http.send()
 
 http.onload = () => {
-    const data = http.response
-    console.log(data)
+    const data = JSON.parse(http.response)
+    data.forEach(e => {
+        tabela.appendChild(criaNovaLinha(e.nome, e.email))
+    })
+
+    // const http2 = new XMLHttpRequest()
+    // http2.open('GET', 'http://localhost:3000/profile')
+
+    // http2.onload = () => {
+    //     //
+    // }
+
+    // http2.send()
 }
