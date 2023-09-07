@@ -38,12 +38,12 @@ listaClientes()
     if (Array.isArray(data)) {
         data.forEach(e => {
             tabela.appendChild(criaNovaLinha(e.nome, e.email))
-        });
+        })
     } else {
-        console.error("Os dados retornados não são uma matriz.");
+        console.error("Os dados retornados não são uma matriz.")
     }
 })
 .catch(error => {
-    console.error("Erro ao obter a lista de clientes: ", error);
-});
+    console.error("Erro ao obter a lista de clientes: ", error)
+})
 
