@@ -15,12 +15,10 @@ const criaNovaLinha = (nome, email) => {
 
 const tabela = document.querySelector('[data-tabela]')
 
-const listaClientes = () => {
-    return fetch(`http://localhost:3000/profile`)
-    .then(resposta => {
-        console.log(resposta.json())
-        return resposta.json()
-    })
+const listaClientes = async () => {
+    const resposta = await fetch(`http://localhost:3000/profile`)
+    console.log(resposta.json())
+    return await resposta.json()
 }
 
 listaClientes()
