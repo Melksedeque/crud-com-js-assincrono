@@ -17,8 +17,9 @@ const tabela = document.querySelector('[data-tabela]')
 
 const listaClientes = async () => {
     const resposta = await fetch(`http://localhost:3000/profile`)
-    console.log(resposta.json())
-    return await resposta.json()
+    dados = await resposta.json()
+    console.log(dados)
+    return dados.clientes
 }
 
 listaClientes()
@@ -34,4 +35,3 @@ listaClientes()
 .catch(error => {
     console.error("Erro ao obter a lista de clientes: ", error)
 })
-
