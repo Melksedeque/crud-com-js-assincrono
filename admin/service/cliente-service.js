@@ -15,24 +15,27 @@ const criaNovaLinha = (nome, email) => {
 
 const tabela = document.querySelector('[data-tabela]')
 
-const http = new XMLHttpRequest()
+const listaClientes = () => {
+    const promise = new Promise((resolve, reject) => {
+        const http = new XMLHttpRequest()
+        http.open('GET', 'http://localhost:3000/profile')
+        http.onload = () => {
+            if(http.status >= 400) {
+                reject(JSON.parse(http.response))
+            }
+            else {
+                resolve(JSON.parse(http.response))
+            }
+        }
+        http.send()
+    })
+    return promise
+}
 
-http.open('GET', 'http://localhost:3000/profile')
-
-http.send()
-
-http.onload = () => {
-    const data = JSON.parse(http.response)
-    data.forEach(e => {
-        tabela.appendChild(criaNovaLinha(e.nome, e.email))
+listaClientes()
+    .then( data => {
+        data.forEach(e => {
+            tabela.appendChild(criaNovaLinha(e.nome, e.email))
+        })
     })
 
-    // const http2 = new XMLHttpRequest()
-    // http2.open('GET', 'http://localhost:3000/profile')
-
-    // http2.onload = () => {
-    //     //
-    // }
-
-    // http2.send()
-}
