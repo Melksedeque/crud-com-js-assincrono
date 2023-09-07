@@ -17,9 +17,9 @@ const tabela = document.querySelector('[data-tabela]')
 
 const listaClientes = async () => {
     const resposta = await fetch(`http://localhost:3000/profile`)
-    dados = await resposta.json()
-    console.log(dados)
-    return dados.clientes
+    data = await resposta.json()
+    console.log(data)
+    return data
 }
 
 listaClientes()
