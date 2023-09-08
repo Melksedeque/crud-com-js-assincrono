@@ -30,6 +30,24 @@ const criaCliente = async (nome, email) => {
     }
 }
 
+const deletaCliente = async (id) => {
+    try {
+        const resposta = await fetch(`http://localhost:3000/profile/${id}`, {
+            method: 'DELETE',
+        })
+
+        if (resposta.ok) {
+            return await resposta.json();
+        } else {
+            throw new Error('Erro na exclusão do cliente');
+        }
+    }
+    catch (error) {
+        console.error('Erro ao deletar o cliente:', error);
+        throw error;
+    }
+}
+
 export const clienteService = {
-    listaClientes, criaCliente
+    listaClientes, criaCliente, deletaCliente
 }
