@@ -14,18 +14,37 @@
 }
 
 .botao-simples {
-    border: none;
+    border: 1px solid transparent;
+    border-radius: 5px;
     background-color: unset;
+    cursor: pointer;
+    transition: all .25s ease;
+    padding: 5px 10px;
 }
 
 .botao-simples--adicionar {
+    border-color: var(--cor-primaria);
     color: var(--cor-primaria);
+}
+.botao-simples--adicionar:hover {
+    background: var(--cor-primaria);
+    color: white;
 }
 
 .botao-simples--excluir {
+    border-color: var(--cor-aviso);
     color: var(--cor-aviso);
+}
+.botao-simples--excluir:hover {
+    background: var(--cor-aviso);
+    color: white;
 }
 
 .botao-simples--editar {
+    border-color: var(--cor-sucesso);
     color: var(--cor-sucesso);
+}
+.botao-simples--editar:hover {
+    background: var(--cor-sucesso);
+    color: white;
 }
