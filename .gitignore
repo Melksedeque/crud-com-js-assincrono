@@ -1,6 +1,6 @@
-/node_modules
-/vendor
-npm-debug.log
-yarn-error.log
+/admin/node_modules
+/admin/vendor
+/admin/npm-debug.log
+/admin/yarn-error.log
 /.idea
 /.vscode
