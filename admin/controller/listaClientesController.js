@@ -29,8 +29,8 @@ tabela.addEventListener('click', (e) => {
         let id = linhaCliente.dataset.id
         clienteService.deletaCliente(id)
         .then(() => {
-            functions.fadeOut(linhaCliente, 10000)
-            linhaCliente.remove()
+            functions.fadeOut(linhaCliente, 500)
+            console.log(linhaCliente)
         })
     }
 })
