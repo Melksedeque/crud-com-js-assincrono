@@ -1,3 +1,4 @@
+import { functions } from "../service/functions.js"
 import { clienteService } from "../service/cliente-service.js"
 
 const criaNovaLinha = (nome, email, id) => {
@@ -27,6 +28,10 @@ tabela.addEventListener('click', (e) => {
         const linhaCliente = e.target.closest('[data-id]')
         let id = linhaCliente.dataset.id
         clienteService.deletaCliente(id)
+        .then(() => {
+            functions.fadeOut(linhaCliente, 10000)
+            linhaCliente.remove()
+        })
     }
 })
 
