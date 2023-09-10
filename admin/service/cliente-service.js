@@ -1,8 +1,11 @@
 const listaClientes = async () => {
     const resposta = await fetch(`http://localhost:3000/profile`)
-    const data = await resposta.json()
 
-    return data
+    if (resposta.ok) {
+        return await resposta.json()
+    } else {
+        throw new Error('Não foi possível listar os clientes')
+    }
 }
 
 const criaCliente = async (nome, email) => {
@@ -19,14 +22,14 @@ const criaCliente = async (nome, email) => {
         })
 
         if (resposta.ok) {
-            return await resposta.json();
+            return await resposta.json()
         } else {
-            throw new Error('Erro na criação do cliente');
+            throw new Error('Erro na criação do cliente')
         }
     }
     catch (error) {
-        console.error('Erro ao criar o cliente:', error);
-        throw error;
+        console.error('Erro ao criar o cliente:', error)
+        throw error
     }
 }
 
@@ -37,17 +40,52 @@ const deletaCliente = async (id) => {
         })
 
         if (resposta.ok) {
-            return await resposta.json();
+            return await resposta.json()
         } else {
-            throw new Error('Erro na exclusão do cliente');
+            throw new Error('Erro na exclusão do cliente')
         }
     }
     catch (error) {
-        console.error('Erro ao deletar o cliente:', error);
-        throw error;
+        console.error('Erro ao deletar o cliente:', error)
+        throw error
+    }
+}
+
+const detalhesCliente = async (id) => {
+    try {
+        const resposta = await fetch(`http://localhost:3000/profile/${id}`)
+    
+        if (resposta.ok) {
+            return await resposta.json()
+        } else {
+            throw new Error('Erro na exclusão do cliente')
+        }
+    }
+    catch (error) {
+        console.error('Erro ao detalhar os dados do cliente:', error)
+        throw error
+    }
+}
+
+const editaCliente = async (id, nome, email) => {
+    const resposta = await fetch(`http://localhost:3000/profile/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            nome,
+            email
+        })
+    })
+
+    if (resposta.ok) {
+        return await resposta.json()
+    } else {
+        throw new Error('Não foi possível editar o cliente')
     }
 }
 
 export const clienteService = {
-    listaClientes, criaCliente, deletaCliente
+    listaClientes, criaCliente, deletaCliente, detalhesCliente, editaCliente
 }
