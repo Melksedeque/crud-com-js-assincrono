@@ -4,6 +4,16 @@
       "nome": "Melk",
       "email": "melksedeque@hotmail.com",
       "id": 1
+    },
+    {
+      "nome": "Amanda",
+      "email": "dominguesamanda9@hotmail.com",
+      "id": 2
+    },
+    {
+      "nome": "João",
+      "email": "silva_jco@hotmail.com",
+      "id": 4
     }
   ]
 }
